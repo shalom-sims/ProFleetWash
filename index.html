@@ -3,347 +3,498 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Developer Portfolio</title>
+    <title>Pro Fleet Wash - Mobile Pressure Fleet Washing</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #0366d6;
-            --secondary-color: #24292e;
-            --text-color: #24292e;
-            --bg-color: #f6f8fa;
-            --accent-color: #2ea44f;
+            --primary-blue: #5EAAE0;
+            --primary-green: #A2D45E;
+            --dark-gray: #333;
+            --light-gray: #f4f4f4;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
+            color: #333;
         }
         
         .container {
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
         
+        /* Header */
         header {
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 2rem 0;
-            margin-bottom: 2rem;
+            background-color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
-        nav ul {
+        .header-content {
             display: flex;
-            justify-content: center;
-            list-style: none;
+            justify-content: space-between;
+            align-items: center;
         }
         
-        nav ul li {
-            margin: 0 15px;
+        .logo {
+            max-width: 250px;
         }
         
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
+        .contact-info {
+            text-align: right;
         }
         
-        nav ul li a:hover {
-            color: #58a6ff;
+        .contact-info p {
+            margin: 5px 0;
         }
         
+        .contact-info .phone {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+        
+        /* Hero section */
         .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/api/placeholder/1200/500') center/cover no-repeat;
+            color: white;
+            padding: 100px 0;
             text-align: center;
-            padding: 3rem 0;
         }
         
         .hero h1 {
             font-size: 2.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 20px;
         }
         
         .hero p {
             font-size: 1.2rem;
-            color: #586069;
-            max-width: 600px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-green);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+        
+        /* About section */
+        .about {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary-blue);
+            font-size: 2rem;
+        }
+        
+        .about-content {
+            max-width: 800px;
             margin: 0 auto;
+            text-align: center;
         }
         
-        .about, .skills, .projects, .contact {
-            margin-bottom: 3rem;
+        /* Custom Program section */
+        .custom-program {
+            padding: 80px 0;
+            background-color: white;
         }
         
-        h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            position: relative;
-            padding-bottom: 0.5rem;
+        .custom-program-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
         }
         
-        h2::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            height: 3px;
-            width: 50px;
-            background-color: var(--primary-color);
+        /* Reasons section */
+        .reasons {
+            padding: 80px 0;
+            background-color: var(--light-gray);
         }
         
-        .skills-grid {
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .reason-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .reason-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .reason-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+        
+        .reason-icon {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+        }
+        
+        /* Services section */
+        .services {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .services-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .service-column {
+            flex: 0 0 48%;
+        }
+        
+        .service-list {
+            list-style: none;
+        }
+        
+        .service-list li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .service-list li:before {
+            content: "✓";
+            color: var(--primary-green);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        /* Vehicles section */
+        .vehicles {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .vehicles-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1rem;
+            gap: 20px;
         }
         
-        .skill-card {
-            background: white;
+        .vehicle-item {
+            background-color: white;
+            padding: 15px;
             border-radius: 5px;
-            padding: 1rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             text-align: center;
-            transition: transform 0.3s;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
         
-        .skill-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .project-card {
-            background: white;
-            border-radius: 5px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .project-image {
-            height: 200px;
-            background-color: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-        }
-        
-        .project-content {
-            padding: 1.5rem;
-        }
-        
-        .project-content h3 {
-            margin-bottom: 0.5rem;
-        }
-        
-        .project-content p {
-            margin-bottom: 1rem;
-            color: #586069;
-        }
-        
-        .button {
-            display: inline-block;
-            background-color: var(--primary-color);
+        /* Call to action */
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
             color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: background-color 0.3s;
+            text-align: center;
         }
         
-        .button:hover {
-            background-color: #0356c7;
+        .cta h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
         }
         
-        form {
-            max-width: 600px;
-            margin: 0 auto;
+        .cta .btn {
+            background-color: white;
+            color: var(--primary-blue);
+            margin-top: 20px;
         }
         
-        .form-group {
-            margin-bottom: 1.5rem;
+        .cta .btn:hover {
+            background-color: var(--dark-gray);
+            color: white;
         }
         
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        input, textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: inherit;
-            font-size: 1rem;
-        }
-        
-        textarea {
-            height: 150px;
-            resize: vertical;
-        }
-        
+        /* Footer */
         footer {
-            background-color: var(--secondary-color);
+            background-color: var(--dark-gray);
             color: white;
+            padding: 40px 0;
             text-align: center;
-            padding: 2rem 0;
-            margin-top: 2rem;
         }
         
-        .social-links {
+        .footer-content {
             display: flex;
-            justify-content: center;
-            margin-top: 1rem;
+            justify-content: space-between;
+            flex-wrap: wrap;
         }
         
-        .social-links a {
-            margin: 0 10px;
-            color: white;
-            font-size: 1.5rem;
-            transition: color 0.3s;
+        .footer-logo {
+            max-width: 150px;
+            margin-bottom: 20px;
         }
         
-        .social-links a:hover {
-            color: #58a6ff;
+        .footer-contact, .footer-links {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-contact h3, .footer-links h3 {
+            margin-bottom: 20px;
+            color: var(--primary-green);
+        }
+        
+        .footer-bottom {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
         
         /* Responsive */
         @media (max-width: 768px) {
-            nav ul {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-info {
+                text-align: center;
+                margin-top: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .service-column {
+                flex: 0 0 100%;
+                margin-bottom: 30px;
+            }
+            
+            .footer-content {
                 flex-direction: column;
                 align-items: center;
             }
             
-            nav ul li {
-                margin: 5px 0;
-            }
-            
-            .projects-grid, .skills-grid {
-                grid-template-columns: 1fr;
+            .footer-contact, .footer-links {
+                text-align: center;
+                margin-top: 20px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <div class="container">
-            <nav>
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+        <div class="container header-content">
+            <div class="logo-container">
+                <img src="/api/placeholder/250/100" alt="Pro Fleet Wash Logo" class="logo">
+            </div>
+            <div class="contact-info">
+                <p>Call us for a quote:</p>
+                <p class="phone">(331) 293-4715</p>
+                <p>profleetwash23@gmail.com</p>
+                <p>English & Spanish Available</p>
+            </div>
         </div>
     </header>
 
-    <main class="container">
-        <section class="hero">
-            <h1>Shalom Sims</h1>
-            <p>Full-Stack Developer | Mobile App Developer | Web Developer</p>
-        </section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Professional Mobile Fleet Pressure Washing</h1>
+            <p>Pro Fleet Wash has the experience and expertise to thoroughly wash your fleet. We use eco-friendly chemicals while conserving water resources to get the job done.</p>
+            <a href="#contact" class="btn">Get a Free Quote</a>
+        </div>
+    </section>
 
-        <section id="about" class="about">
-            <h2>About Me</h2>
-            <p>Welcome to my portfolio! I'm a passionate developer specializing in mobile and web application development. With experience in TypeScript, Oracle SQL, PL/SQL, XML/XSLT, iOS, and Android development, I create robust and user-friendly applications.</p>
-            <p>This is a placeholder site that will be updated with my latest projects and information soon. Feel free to reach out if you'd like to collaborate or learn more about my work.</p>
-        </section>
-
-        <section id="skills" class="skills">
-            <h2>Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-card">TypeScript</div>
-                <div class="skill-card">JavaScript</div>
-                <div class="skill-card">React</div>
-                <div class="skill-card">iOS Development</div>
-                <div class="skill-card">Android Development</div>
-                <div class="skill-card">Oracle SQL</div>
-                <div class="skill-card">PL/SQL</div>
-                <div class="skill-card">XML/XSLT</div>
-                <div class="skill-card">HTML/CSS</div>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Pro Fleet Wash</h2>
+            <div class="about-content">
+                <p>Pro Fleet Wash has the experience and the expertise to thoroughly wash your fleet. We use eco-friendly chemicals while conserving water resources to get the job done. Get in touch with us for a demo wash so we can show you how we can take care of all your fleet pressure washing needs.</p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="projects" class="projects">
-            <h2>Projects</h2>
-            <p>Coming soon! This section will be updated with my latest projects.</p>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">Project Image Placeholder</div>
-                    <div class="project-content">
-                        <h3>Project 1</h3>
-                        <p>A brief description of the project will go here. This is a placeholder text that will be replaced with the actual project details.</p>
-                        <a href="#" class="button">View Project</a>
+    <!-- Custom Program Section -->
+    <section class="custom-program" id="program">
+        <div class="container">
+            <h2 class="section-title">Customized Wash Program</h2>
+            <div class="custom-program-content">
+                <p>At Pro Fleet Wash, we understand that every fleet is unique. That's why we offer a Customized Wash Program that puts you in control. Tailored to your specific needs, this program allows you to design a washing schedule, select the services you require, and set the frequency that suits your operation best. Whether you have a small or large fleet, our flexibility ensures that you get the exact cleaning solution you need. Experience the convenience and efficiency of a wash program designed just for you with Pro Fleet Wash.</p>
+                <a href="#contact" class="btn" style="margin-top: 20px;">Call for a Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reasons Section -->
+    <section class="reasons" id="reasons">
+        <div class="container">
+            <h2 class="section-title">5 Reasons to Wash Your Fleet</h2>
+            <div class="reasons-grid">
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fas fa-wrench"></i>
                     </div>
+                    <h3>1. Less Wear and Tear</h3>
+                    <p>A neat and clean fleet will always last a lot longer than a dirty one.</p>
                 </div>
-                <div class="project-card">
-                    <div class="project-image">Project Image Placeholder</div>
-                    <div class="project-content">
-                        <h3>Project 2</h3>
-                        <p>A brief description of the project will go here. This is a placeholder text that will be replaced with the actual project details.</p>
-                        <a href="#" class="button">View Project</a>
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fas fa-car-battery"></i>
                     </div>
+                    <h3>2. Less Chance of Breakdown</h3>
+                    <p>All parts of a vehicle function better when clean. Road salt, used to melt ice and snow, is a significant factor in vehicle corrosion.</p>
                 </div>
-                <div class="project-card">
-                    <div class="project-image">Project Image Placeholder</div>
-                    <div class="project-content">
-                        <h3>Project 3</h3>
-                        <p>A brief description of the project will go here. This is a placeholder text that will be replaced with the actual project details.</p>
-                        <a href="#" class="button">View Project</a>
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fas fa-heart"></i>
                     </div>
+                    <h3>3. Create Brand Loyalty</h3>
+                    <p>Your fleet is the most visible part of your brand. Clean vehicles are a good way to advertise your business.</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>4. Lower Operational Expenses</h3>
+                    <p>A vehicle sitting in the garage increases operating cost. Keeping your fleet clean will help prevent some breakdowns.</p>
+                </div>
+                <div class="reason-card">
+                    <div class="reason-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>5. Attract & Retain Drivers</h3>
+                    <p>Well maintained fleet attracts drivers and helps retain drivers. Managers can use the overall condition and maintenance of the fleet to attract drivers.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="contact" class="contact">
-            <h2>Contact Me</h2>
-            <form>
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" placeholder="Your Name">
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Services We Offer</h2>
+            <div class="services-container">
+                <div class="service-column">
+                    <ul class="service-list">
+                        <li>Exterior Wash</li>
+                        <li>Interior Cleaning</li>
+                        <li>Trailer Washouts</li>
+                        <li>Under Carriage Washing</li>
+                        <li>Engine Washing</li>
+                    </ul>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Your Email">
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" placeholder="Your Message"></textarea>
-                </div>
-                <button type="submit" class="button">Send Message</button>
-            </form>
-        </section>
-    </main>
+            </div>
+        </div>
+    </section>
 
+    <!-- Vehicles Section -->
+    <section class="vehicles" id="vehicles">
+        <div class="container">
+            <h2 class="section-title">Vehicles We Wash</h2>
+            <div class="vehicles-grid">
+                <div class="vehicle-item">Tractor Day Cabs & Sleeper</div>
+                <div class="vehicle-item">Trailers</div>
+                <div class="vehicle-item">Car Hauler</div>
+                <div class="vehicle-item">Flatbeds</div>
+                <div class="vehicle-item">Tow Trucks</div>
+                <div class="vehicle-item">Box Truck/Straight Trucks</div>
+                <div class="vehicle-item">Heavy Duty Trucks</div>
+                <div class="vehicle-item">Sprinter Vans</div>
+                <div class="vehicle-item">Charter Buses</div>
+                <div class="vehicle-item">Truck Rentals</div>
+                <div class="vehicle-item">Delivery Trucks</div>
+                <div class="vehicle-item">Long Haulers</div>
+                <div class="vehicle-item">Motor Homes & RVs</div>
+                <div class="vehicle-item">Semi Trucks</div>
+                <div class="vehicle-item">Tanker Trucks</div>
+                <div class="vehicle-item">Livestock Trailers</div>
+                <div class="vehicle-item">Farm Vehicles</div>
+                <div class="vehicle-item">Box Trucks</div>
+                <div class="vehicle-item">Refrigerated Trucks</div>
+                <div class="vehicle-item">Dump Trucks</div>
+                <div class="vehicle-item">Utility Trucks</div>
+                <div class="vehicle-item">Construction Trucks</div>
+                <div class="vehicle-item">Garbage Trucks</div>
+                <div class="vehicle-item">Concrete Mixer Trucks</div>
+                <div class="vehicle-item">Grain Hoppers</div>
+                <div class="vehicle-item">Reefers</div>
+                <div class="vehicle-item">Food Trucks</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <h2>Ready to Keep Your Fleet Looking Professional?</h2>
+            <p>Call our customer support for a quote today!</p>
+            <p class="phone" style="font-size: 2rem; font-weight: bold; margin: 20px 0;">(331) 293-4715</p>
+            <p>or email us at: profleetwash23@gmail.com</p>
+            <p><strong>English & Spanish Available</strong></p>
+            <a href="mailto:profleetwash23@gmail.com" class="btn">Email Us Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Your Name. All Rights Reserved.</p>
-            <div class="social-links">
-                <a href="https://github.com/yourusername">GitHub</a>
-                <a href="https://linkedin.com/in/yourusername">LinkedIn</a>
-                <a href="https://twitter.com/yourusername">Twitter</a>
+            <div class="footer-content">
+                <div class="footer-logo-container">
+                    <img src="/api/placeholder/150/60" alt="Pro Fleet Wash Logo" class="footer-logo">
+                    <p>Mobile Pressure Fleet Wash</p>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p>Phone: (331) 293-4715</p>
+                    <p>Email: profleetwash23@gmail.com</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <p><a href="#about" style="color: white; text-decoration: none;">About Us</a></p>
+                    <p><a href="#program" style="color: white; text-decoration: none;">Customized Program</a></p>
+                    <p><a href="#services" style="color: white; text-decoration: none;">Our Services</a></p>
+                    <p><a href="#vehicles" style="color: white; text-decoration: none;">Vehicles We Wash</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pro Fleet Wash. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
+
 </body>
 </html>
