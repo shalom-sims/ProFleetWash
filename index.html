@@ -31,6 +31,10 @@
             margin: 0 auto;
             padding: 0 20px;
         }
+        .container > h1 {
+            font-size: 4 rem;
+            margin-bottom: 20px;
+        }
         
         /* Header */
         header {
@@ -206,18 +210,26 @@
             background-color: var(--light-gray);
         }
         
-        .vehicles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
+        .vehicle-list {
+            list-style: none;
+            max-width: 800px;
+            margin: 0 auto;
+            columns: 2;
+            column-gap: 40px;
         }
         
-        .vehicle-item {
-            background-color: white;
-            padding: 15px;
-            border-radius: 5px;
-            text-align: center;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        .vehicle-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #ddd;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .vehicle-list li:before {
+            content: "•";
+            color: var(--primary-green);
+            position: absolute;
+            left: 0;
         }
         
         /* Call to action */
@@ -310,6 +322,58 @@
                 text-align: center;
                 margin-top: 20px;
             }
+            
+            .vehicle-list {
+                columns: 1;
+            }
+        }
+        
+        /* Add these CSS rules after the header-content styles */
+        .main-nav {
+            margin: 0 20px;
+        }
+        
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .main-nav a {
+            color: var(--dark-gray);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .main-nav a:hover {
+            color: var(--primary-blue);
+            background-color: var(--light-gray);
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .main-nav {
+                margin: 20px 0;
+            }
+            
+            .main-nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .contact-info {
+                text-align: center;
+                margin-top: 20px;
+            }
         }
     </style>
 </head>
@@ -320,10 +384,18 @@
             <div class="logo-container">
                 <img src="./src/assets/images/logo.png" alt="Pro Fleet Wash Logo" class="logo">
             </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#program">Program</a></li>
+                    <li><a href="#reasons">Why Wash</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#vehicles">Vehicles</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
             <div class="contact-info">
-                <p>Call us for a quote:</p>
-                <p class="phone">(331) 293-4715</p>
-                <p>profleetwash23@gmail.com</p>
+                <p>Call us for a quote: <span class="phone">(331) 293-4715</span></p>
                 <p>English & Spanish Available</p>
             </div>
         </div>
@@ -424,36 +496,37 @@
     <!-- Vehicles Section -->
     <section class="vehicles" id="vehicles">
         <div class="container">
-            <h2 class="section-title">Vehicles We Wash</h2>
-            <div class="vehicles-grid">
-                <div class="vehicle-item">Tractor Day Cabs & Sleeper</div>
-                <div class="vehicle-item">Trailers</div>
-                <div class="vehicle-item">Car Hauler</div>
-                <div class="vehicle-item">Flatbeds</div>
-                <div class="vehicle-item">Tow Trucks</div>
-                <div class="vehicle-item">Box Truck/Straight Trucks</div>
-                <div class="vehicle-item">Heavy Duty Trucks</div>
-                <div class="vehicle-item">Sprinter Vans</div>
-                <div class="vehicle-item">Charter Buses</div>
-                <div class="vehicle-item">Truck Rentals</div>
-                <div class="vehicle-item">Delivery Trucks</div>
-                <div class="vehicle-item">Long Haulers</div>
-                <div class="vehicle-item">Motor Homes & RVs</div>
-                <div class="vehicle-item">Semi Trucks</div>
-                <div class="vehicle-item">Tanker Trucks</div>
-                <div class="vehicle-item">Livestock Trailers</div>
-                <div class="vehicle-item">Farm Vehicles</div>
-                <div class="vehicle-item">Box Trucks</div>
-                <div class="vehicle-item">Refrigerated Trucks</div>
-                <div class="vehicle-item">Dump Trucks</div>
-                <div class="vehicle-item">Utility Trucks</div>
-                <div class="vehicle-item">Construction Trucks</div>
-                <div class="vehicle-item">Garbage Trucks</div>
-                <div class="vehicle-item">Concrete Mixer Trucks</div>
-                <div class="vehicle-item">Grain Hoppers</div>
-                <div class="vehicle-item">Reefers</div>
-                <div class="vehicle-item">Food Trucks</div>
-            </div>
+            <h2 class="section-title">Fleet Vehicles</h2>
+            <ul class="vehicle-list">
+                <li>Tractor Day Cabs & Sleeper</li>
+                <li>Trailers</li>
+                <li>Car Hauler</li>
+                <li>Flatbeds</li>
+                <li>Tow Trucks</li>
+                <li>Box Truck/Straight Trucks</li>
+                <li>Heavy Duty Trucks</li>
+                <li>Sprinter Vans</li>
+                <li>Charter Buses</li>
+                <li>Truck Rentals</li>
+                <li>Delivery Trucks</li>
+                <li>Long Haulers</li>
+                <li>Motor Homes</li>
+                <li>RVs</li>
+                <li>Semi Trucks</li>
+                <li>Tanker Trucks</li>
+                <li>Livestock Trailers</li>
+                <li>Farm Vehicles</li>
+                <li>Box Trucks</li>
+                <li>Refrigerated Trucks</li>
+                <li>Dump Trucks</li>
+                <li>Utility Trucks</li>
+                <li>Construction Trucks</li>
+                <li>Garbage Trucks</li>
+                <li>Concrete Mixer Trucks</li>
+                <li>Grain Hoppers</li>
+                <li>Reefers</li>
+                <li>Food Trucks</li>
+            </ul>
         </div>
     </section>
 
@@ -465,7 +538,7 @@
             <p class="phone" style="font-size: 2rem; font-weight: bold; margin: 20px 0;">(331) 293-4715</p>
             <p>or email us at: profleetwash23@gmail.com</p>
             <p><strong>English & Spanish Available</strong></p>
-            <a href="mailto:profleetwash23@gmail.com" class="btn">Email Us Now</a>
+            <a href="contact-us.html" class="btn">Contact Us</a>
         </div>
     </section>
 
