@@ -154,12 +154,60 @@
         .custom-program {
             padding: 80px 0;
             background-color: white;
+            color: var(--dark-gray);
         }
-        
         .custom-program-content {
-            max-width: 800px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1200px;
             margin: 0 auto;
+        }
+        .custom-program-text {
+            flex: 1 1 0;
+            min-width: 280px;
+            padding: 32px 24px;
+            margin: 24px 0;
+            font-size: 1.15rem;
+            line-height: 1.7;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .custom-program-text .section-title {
             text-align: center;
+            width: 100%;
+        }
+        .custom-program-image {
+            flex: 1 1 0;
+            min-width: 280px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .custom-program-image img {
+            max-width: 400px;
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+        }
+        @media (max-width: 900px) {
+            .custom-program-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .custom-program-image, .custom-program-text {
+                min-width: 0;
+                padding: 0;
+                margin: 0;
+            }
+            .custom-program-image img {
+                max-width: 100%;
+                height: auto;
+            }
         }
         
         /* Reasons section */
@@ -602,7 +650,9 @@
     <header>
         <div class="container header-content">
             <div class="logo-container">
-                <img src="./src/assets/images/logo.png" alt="Pro Fleet Wash Logo" class="logo">
+                <a href="index.html">
+                    <img src="./src/assets/images/logo.png" alt="Pro Fleet Wash Logo" class="logo">
+                </a>
             </div>
             <nav class="main-nav">
                 <ul>
@@ -615,7 +665,7 @@
                 </ul>
             </nav>
             <div class="contact-info">
-                <p><span class="phone">(331) 293-4715</span></p>
+                <p><span class="phone"><a href="tel:3312934715" style="color: var(--primary-blue); text-decoration: none;">(331) 293-4715</a></span></p>
                 <p>English & Spanish Available</p>
             </div>
         </div>
@@ -643,10 +693,15 @@
     <!-- Custom Program Section -->
     <section class="custom-program" id="program">
         <div class="container">
-            <h2 class="section-title">Customized Wash Program</h2>
             <div class="custom-program-content">
-                <p>At Pro Fleet Wash, we understand that every fleet is unique. That's why we offer a Customized Wash Program that puts you in control. Tailored to your specific needs, this program allows you to design a washing schedule, select the services you require, and set the frequency that suits your operation best. Whether you have a small or large fleet, our flexibility ensures that you get the exact cleaning solution you need. Experience the convenience and efficiency of a wash program designed just for you with Pro Fleet Wash.</p>
-                <a href="#contact" class="btn" style="margin-top: 20px;">Call for a Quote</a>
+                <div class="custom-program-text">
+                    <h2 class="section-title">Customized Wash Program</h2>
+                    <p>At Pro Fleet Wash, we understand that every fleet is unique. That's why we offer a Customized Wash Program that puts you in control. Tailored to your specific needs, this program allows you to design a washing schedule, select the services you require, and set the frequency that suits your operation best. Whether you have a small or large fleet, our flexibility ensures that you get the exact cleaning solution you need. Experience the convenience and efficiency of a wash program designed just for you with Pro Fleet Wash.</p>
+                    <a href="#contact" class="btn" style="margin: 20px auto 0 auto; align-self: center;">Call for a Quote</a>
+                </div>
+                <div class="custom-program-image">
+                    <img src="./src/assets/images/man-with-tools-truck-worker-uniform-faulty-truck.jpg" alt="Fleet Wash Program">
+                </div>
             </div>
         </div>
     </section>
@@ -756,7 +811,7 @@
         <div class="container">
             <h2>Ready to Keep Your Fleet Looking Professional?</h2>
             <p>Call our customer support for a quote today!</p>
-            <p class="phone" style="font-size: 2rem; font-weight: bold; margin: 20px 0;">(331) 293-4715</p>
+            <p class="phone" style="font-size: 2rem; font-weight: bold; margin: 20px 0;"><a href="tel:3312934715" style="color: white; text-decoration: none;">(331) 293-4715</a></p>
             <p>or email us at: profleetwash23@gmail.com</p>
             <p><strong>English & Spanish Available</strong></p>
             <a href="contact-us.html" class="btn">Contact Us</a>
