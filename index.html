@@ -5,19 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pro Fleet Wash - Mobile Pressure Fleet Washing</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-blue: #5EAAE0;
             --primary-green: #A2D45E;
             --dark-gray: #333;
             --light-gray: #f4f4f4;
+            --heading-font: 'Poppins', sans-serif;
+            --body-font: 'Inter', sans-serif;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: var(--body-font);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--heading-font);
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-weight: 700;
+        }
+
+        .btn {
+            font-family: var(--heading-font);
+            font-weight: 500;
+        }
+
+        .contact-info .phone {
+            font-family: var(--heading-font);
+            font-weight: 600;
         }
         
         body {
@@ -54,6 +76,7 @@
         
         .logo {
             max-width: 250px;
+            border-radius: 20%;
         }
         
         .contact-info {
@@ -72,10 +95,13 @@
         
         /* Hero section */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/api/placeholder/1200/500') center/cover no-repeat;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('./src/assets/images/redtruck.png') center/cover no-repeat;
             color: white;
             padding: 100px 0;
             text-align: center;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
         }
         
         .hero h1 {
@@ -144,14 +170,14 @@
         
         .reasons-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
             margin-top: 40px;
         }
         
         .reason-card {
             background-color: white;
-            padding: 30px;
+            padding: 20px;
             border-radius: 5px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
@@ -176,53 +202,87 @@
         .services {
             padding: 80px 0;
             background-color: white;
+            text-align: center;
         }
         
         .services-container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
+            justify-content: center;
+            max-width: 800px;
+            margin: 0 auto;
         }
         
         .service-column {
-            flex: 0 0 48%;
+            flex: 0 0 100%;
+            margin-bottom: 30px;
         }
         
         .service-list {
             list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
         }
         
         .service-list li {
-            padding: 10px 0;
-            border-bottom: 1px dashed #ddd;
+            padding: 15px 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .service-list li:last-child {
+            grid-column: 1 / -1;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .service-list li:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         
         .service-list li:before {
             content: "✓";
             color: var(--primary-green);
-            margin-right: 10px;
+            margin-right: 15px;
             font-weight: bold;
         }
         
         /* Vehicles section */
         .vehicles {
             padding: 80px 0;
-            background-color: var(--light-gray);
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('./src/assets/images/truck-driver.jpg') center/cover no-repeat;
+            color: white;
+            text-align: center;
         }
         
         .vehicle-list {
             list-style: none;
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
-            columns: 2;
+            columns: 4;
             column-gap: 40px;
+            text-align: left;
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(2px);
         }
         
         .vehicle-list li {
             padding: 8px 0;
-            border-bottom: 1px dashed #ddd;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
             position: relative;
             padding-left: 20px;
+            break-inside: avoid;
         }
         
         .vehicle-list li:before {
@@ -375,6 +435,166 @@
                 margin-top: 20px;
             }
         }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 1200px) {
+            .reasons-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .vehicle-list {
+                columns: 3;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .vehicle-list {
+                columns: 2;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .vehicle-list {
+                columns: 1;
+            }
+            
+            .service-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-list li:last-child {
+                max-width: 100%;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.visible {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 800px;
+            width: 90%;
+            margin: auto;
+            position: relative;
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.visible .modal-content {
+            transform: translateY(0);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            color: var(--dark-gray);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--primary-blue);
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: var(--dark-gray);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        .required {
+            color: #ff4444;
+            margin-left: 3px;
+        }
+
+        .required-note {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: -10px;
+        }
+
+        .form-group input:required,
+        .form-group textarea:required,
+        .form-group select:required {
+            border-left: 3px solid var(--primary-blue);
+        }
+
+        .form-group input:invalid,
+        .form-group textarea:invalid,
+        .form-group select:invalid {
+            border-color: #ff4444;
+        }
     </style>
 </head>
 <body>
@@ -388,14 +608,14 @@
                 <ul>
                     <li><a href="#about">About</a></li>
                     <li><a href="#program">Program</a></li>
-                    <li><a href="#reasons">Why Wash</a></li>
+                    <!-- <li><a href="#reasons">Why Wash</a></li> -->
                     <li><a href="#services">Services</a></li>
                     <li><a href="#vehicles">Vehicles</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
             <div class="contact-info">
-                <p>Call us for a quote: <span class="phone">(331) 293-4715</span></p>
+                <p><span class="phone">(331) 293-4715</span></p>
                 <p>English & Spanish Available</p>
             </div>
         </div>
@@ -496,7 +716,7 @@
     <!-- Vehicles Section -->
     <section class="vehicles" id="vehicles">
         <div class="container">
-            <h2 class="section-title">Fleet Vehicles</h2>
+            <h2 class="section-title">Fleet Vehicles We Service</h2>
             <ul class="vehicle-list">
                 <li>Tractor Day Cabs & Sleeper</li>
                 <li>Trailers</li>
@@ -526,6 +746,7 @@
                 <li>Grain Hoppers</li>
                 <li>Reefers</li>
                 <li>Food Trucks</li>
+                <li>And More!</li>
             </ul>
         </div>
     </section>
@@ -569,5 +790,106 @@
         </div>
     </footer>
 
+    <!-- Add this before the closing body tag -->
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 style="text-align: center; margin-bottom: 30px; color: var(--primary-blue);">Contact Us</h2>
+            <form class="contact-form" action="mailto:profleetwash23@gmail.com" method="post" enctype="text/plain">
+                <div class="form-group">
+                    <label for="name">Full Name <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="fleet-size">Fleet Size <span class="required">*</span></label>
+                    <select id="fleet-size" name="fleet-size" required>
+                        <option value="">Select fleet size</option>
+                        <option value="1-5">1-5 vehicles</option>
+                        <option value="6-20">6-20 vehicles</option>
+                        <option value="21-50">21-50 vehicles</option>
+                        <option value="51+">51+ vehicles</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message <span class="required">*</span></label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <p class="required-note"><span class="required">*</span> Required fields</p>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section');
+            
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                section.classList.add('fade-in');
+                observer.observe(section);
+            });
+
+            // Modal functionality
+            const modal = document.getElementById('contactModal');
+            const contactLinks = document.querySelectorAll('a[href="#contact"], a[href="contact-us.html"]');
+            const closeModal = document.querySelector('.close-modal');
+
+            function openModal() {
+                modal.classList.add('visible');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModalFunc() {
+                modal.classList.remove('visible');
+                document.body.style.overflow = '';
+            }
+
+            contactLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openModal();
+                });
+            });
+
+            closeModal.addEventListener('click', closeModalFunc);
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModalFunc();
+                }
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('visible')) {
+                    closeModalFunc();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
